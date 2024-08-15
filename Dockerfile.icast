@@ -1,0 +1,19 @@
+FROM alpine:latest
+LABEL maintainer "riqueft@icloud.com"
+
+
+RUN addgroup -S icecast && adduser -S icecast -G icecast
+
+RUN apk add --update icecast mailcap && rm -rf /var/cache/apk/*
+
+COPY icecast.xml /etc/icecast2/icecast.xml
+
+COPY docker-entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+RUN chown icecast:icecast /etc/icecast2/icecast.xml
+
+EXPOSE 8000
+VOLUME ["/var/log/icecast"]
+ENTRYPOINT ["/entrypoint.sh"]
+CMD icecast -c /etc/icecast2/icecast.xml

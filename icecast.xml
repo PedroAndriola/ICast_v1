@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<icecast>
+    <limits>
+        <clients>100</clients>
+        <sources>2</sources>
+        <adminusers>1</adminusers>
+        <password>hackme</password>
+        <changeowner>icecast:icecast</changeowner>
+    </limits>
+
+    <hostname>your.hostname.com</hostname>
+    <location>Your Location</location>
+    <admin>your.email@example.com</admin>
+
+    <listen-socket>
+        <port>8000</port>
+        <hostname>0.0.0.0</hostname>
+        <ssl>0</ssl>
+    </listen-socket>
+
+    <authentication>
+        <admin-user>admin</admin-user>
+        <admin-password>hackme</admin-password>
+    </authentication>
+
+    <mount>
+        <mount-name>/stream</mount-name>
+        <file>/var/lib/icecast2/media/stream.mp3</file>
+        <max-listeners>100</max-listeners>
+    </mount>
+</icecast>
